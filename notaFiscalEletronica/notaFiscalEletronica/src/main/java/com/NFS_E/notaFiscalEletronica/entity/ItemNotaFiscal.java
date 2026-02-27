@@ -1,6 +1,7 @@
 package com.NFS_E.notaFiscalEletronica.entity;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -32,6 +33,17 @@ public class ItemNotaFiscal {
     @Column(name= "valor_total", nullable=false)
     private BigDecimal valorTotal;
 
+    
+    private String ncm;
+    private String cfop;
+    private String cstIcms;
+
+
+    //campos do imposto 
+    private BigDecimal baseCalculoIcms;
+    private BigDecimal aliquotaIcms;
+    private BigDecimal valorIcms;
+
 
     public ItemNotaFiscal(){}
 
@@ -42,4 +54,14 @@ public class ItemNotaFiscal {
             this.valorTotal = this.quantidade.multiply(this.valorUnitario);
         }
     }
+
+    public void calcularImpostos() {
+
+        this.baseCalculoIcms = this.valorTotal;
+        if (this.aliquotaIcms != null) {
+            this.valorIcms = this.baseCalculoIcms.multiply(this.aliquotaIcms)
+                                .divide(new BigDecimal("100"), 2, RoundingMode.HALF_UP);
+        }
+    }
 }
+
