@@ -8,3 +8,15 @@ services:
       - 'POSTGRES_USER=${DB_USERNAME}'
     ports:
       - '${DB_PORT}:5432'
+
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: '512M'
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

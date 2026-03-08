@@ -3,8 +3,8 @@ package com.NFS_E.notaFiscalEletronica.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.NFS_E.notaFiscalEletronica.controller.dto.NotaFiscalRequest;
 import com.NFS_E.notaFiscalEletronica.entity.NotaFiscal;
+import com.NFS_E.notaFiscalEletronica.presentation.dto.NotaFiscalRequest;
 import com.NFS_E.notaFiscalEletronica.service.NotaFiscalService;
 
 import lombok.AllArgsConstructor;

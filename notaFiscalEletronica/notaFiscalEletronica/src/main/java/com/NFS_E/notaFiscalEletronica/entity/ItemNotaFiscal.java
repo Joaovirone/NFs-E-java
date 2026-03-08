@@ -27,21 +27,30 @@ public class ItemNotaFiscal {
     @Column(name= "quantidade", nullable=false)
     private BigDecimal quantidade;;
 
-    @Column(name= "valor_unidade", nullable=false)
+    @Column(name= "valor_unitario", nullable=false)
     private BigDecimal valorUnitario;
 
     @Column(name= "valor_total", nullable=false)
     private BigDecimal valorTotal;
 
-    
+    @Column(name= "ncm", nullable = false)
     private String ncm;
+    
+    @Column(name= "cfop", nullable = false)
     private String cfop;
+    
+    @Column(name = "cst_icms", nullable = false)
     private String cstIcms;
 
 
     //campos do imposto 
+    @Column(name= "base_calculo_icms", nullable = false)
     private BigDecimal baseCalculoIcms;
+
+    @Column(name= "aliquota_icms", nullable = false)
     private BigDecimal aliquotaIcms;
+
+    @Column(name= "valor_icms", nullable = false)
     private BigDecimal valorIcms;
 
 
