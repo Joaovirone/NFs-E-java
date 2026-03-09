@@ -1,10 +1,11 @@
 package com.NFS_E.notaFiscalEletronica.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.NFS_E.notaFiscalEletronica.entity.NotaFiscal;
-import com.NFS_E.notaFiscalEletronica.presentation.dto.NotaFiscalRequest;
 import com.NFS_E.notaFiscalEletronica.service.NotaFiscalService;
 
 import lombok.AllArgsConstructor;
@@ -17,7 +18,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.NFS_E.notaFiscalEletronica.controller.dto.NotaFiscalRequestDTO;
+import com.NFS_E.notaFiscalEletronica.controller.dto.NotaFiscalResponseDTO;
 import com.NFS_E.notaFiscalEletronica.entity.ItemNotaFiscal;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -29,28 +36,18 @@ public class NotaFiscalController {
 
 
     @PostMapping
-    public ResponseEntity<NotaFiscal> criarNota(@RequestBody NotaFiscalRequest request) {
-        
-        NotaFiscal nota = new NotaFiscal();
+    public ResponseEntity<NotaFiscalResponseDTO> criarNota(@RequestBody NotaFiscalRequestDTO request) {
 
-        nota.setNotaFiscalDestino(request.notaFiscalDestino());
+        NotaFiscalResponseDTO response = service.emitir(request);
 
-        var itens = request.itens().stream().map(itemDto -> {
+        return ResponseEntity.ok(response);
+    
+    }
 
-            ItemNotaFiscal item = new ItemNotaFiscal();
-            item.setDescricao(itemDto.descricao());
-            item.setQuantidade(itemDto.quantidade());
-            item.setValorUnitario(itemDto.valorUnitario());
-            item.calcularSubtotal();
-
-            return item;
-        }).collect(Collectors.toList());
-        
-        nota.setItens(itens);
-
-        NotaFiscal notaSalva = service.emitir(nota);
-
-        return ResponseEntity.ok(notaSalva);
+    @GetMapping
+    public ResponseEntity<List<NotaFiscalResponseDTO>> listar() {
+        return ResponseEntity.ok(service.listarTodas());
     }
     
+
 }
