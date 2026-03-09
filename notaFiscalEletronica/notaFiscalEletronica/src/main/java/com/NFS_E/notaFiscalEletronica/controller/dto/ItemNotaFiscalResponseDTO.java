@@ -3,14 +3,19 @@ package com.NFS_E.notaFiscalEletronica.controller.dto;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public record ItemNotaFiscalResponseDTO(
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-    UUID id,
-    String descricao,
-    BigDecimal quantidade,
-    BigDecimal valorUnitario,
-    BigDecimal valorTotal
-) {
-    
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class ItemNotaFiscalResponseDTO{
+    UUID id;
+    String descricao;
+    BigDecimal quantidade;
+    BigDecimal valorUnitario;
+    BigDecimal valorTotal;
 
 }
