@@ -29,7 +29,7 @@ ENV DB_HOST=postgres \
     DB_PASSWORD=password
 
 # Expor porta
-EXPOSE 8080
+EXPOSE 5002
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
