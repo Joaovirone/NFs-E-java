@@ -14,6 +14,7 @@ public class NotaFiscalService {
     
     private final NotaFiscalRepository repository;
 
+
     @Transactional
     public NotaFiscal emitir(NotaFiscal nota){
 
@@ -21,4 +22,6 @@ public class NotaFiscalService {
 
         return repository.save(nota);
     }
+
+    
 }
