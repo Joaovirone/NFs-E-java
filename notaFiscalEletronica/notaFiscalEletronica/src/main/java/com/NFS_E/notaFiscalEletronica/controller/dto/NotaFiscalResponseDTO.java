@@ -4,9 +4,11 @@ import java.math.BigDecimal;
 
 public record NotaFiscalResponseDTO(
 
-        String descricao,
-        BigDecimal quantidade,
-        BigDecimal valorUnitario
+        UUID id,
+        String notaFiscalDestino
+        BigDecimal valorTotal,
+        String status,
+        List<ItemNotaFiscalResponseDTO> itens
 ) {
     
 }
