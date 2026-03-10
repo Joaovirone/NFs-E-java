@@ -56,7 +56,6 @@ public class NotaFiscal {
     private StatusNota status = StatusNota.DIGITACAO;
 
     @OneToMany(mappedBy="notaFiscal", cascade= CascadeType.ALL, orphanRemoval= true)
-    @JoinColumn(name= "nota_id")
     private List<ItemNotaFiscal> itens = new ArrayList<>();
 
 
