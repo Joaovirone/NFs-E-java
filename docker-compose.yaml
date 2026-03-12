@@ -34,8 +34,9 @@ services:
       DB_NAME: ${DB_NAME}
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
     ports:
-      - '8080:8080'
+      - '5002:5002'
     depends_on:
       postgres:
         condition: service_healthy
